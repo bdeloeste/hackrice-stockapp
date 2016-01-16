@@ -10,39 +10,30 @@
   </header>
   <body>
     <table>
-      <colgroup span="4"></colgroup>
       <tr>
-        <th>Company</th>
-        <th>Current Price</th>
-        <th>Past24h Graph</th>
-        <th>Buy Shares</th>
+        <th><img src="../stockapp/stocks/static/stocks/google.png"></th>
+        <th><img src="../stockapp/stocks/static/stocks/microsoft.png"></th>
+        <th><img src="../stockapp/stocks/static/stocks/facebook.png"></th>
       </tr>
+
       <tr>
-        <td><img src="../stockapp/stocks/static/stocks/google.png"></td>
-        <td><p>Price: $5.00</p></td>
-        <td><p>INSERT GRAPH</p></td>
-        <td>
+        <th><p>Price: $5.00</p></th>
+        <th><p>Price: $5.00</p></th>
+        <th><p>Price: $5.00</p></th>
+      </tr>
+
+      <tr>
+        <th>
           <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
           <button type='submit' class="submitBtn">Buy</button>
-        </td>
-      </tr>
-      <tr>
-        <td><img src="../stockapp/stocks/static/stocks/microsoft.png"></td>
-        <td><p>Price: $5.00</p></td>
-        <td><p>INSERT GRAPH</p></td>
-        <td>
+        </th>
+        <th>
           <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
           <button type='submit' class="submitBtn">Buy</button>
-        </td>
-      </tr>
-      <tr>
-        <td><img src="../stockapp/stocks/static/stocks/facebook.png"></td>
-        <td><p>Price: $5.00</p></td>
-        <td><p>INSERT GRAPH</p></td>
-        <td>
+        </th>
+        <th>
           <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
           <button type='submit' class="submitBtn">Buy</button>
-        </td>
       </tr>
     </table>
   </body>
