@@ -1,16 +1,20 @@
-import tweepy
+import json
+import os
 
 from django.shortcuts import render
 
 
 # Create your views here.
 def index(request):
-    google_counter = 0
-    twitter_counter = 0
+    google_counter = 154.54
+    microsoft_counter = 12
     facebook_counter = 0
 
     co_stocks = {'google': google_counter,
-                 'twitter': twitter_counter,
+                 'microsoft': microsoft_counter,
                  'facebook': facebook_counter}
 
-    return render(request, 'base.html', {})
+    with open("stock_data.json", "w") as outfile:
+        json.dump(co_stocks, outfile)
+
+    return render(request, 'base.html', co_stocks)

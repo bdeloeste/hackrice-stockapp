@@ -1,6 +1,6 @@
 import nltk;
-from nltk.classify import  NaiveBayesClassifier
-from nltk.sentiment import  SentimentAnalyzer
+from nltk.classify import NaiveBayesClassifier
+from nltk.sentiment import SentimentAnalyzer
 from nltk.sentiment.util import *
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.corpus import subjectivity
@@ -20,8 +20,7 @@ def getSentiments(sentences):
     return sentimtents
 
 
-
-sen = ["Don't wanna RT a bunch of @realDonaldTrump... but Donald is carpet bombing @tedcruz right now and it's really entertaining.", "Greatly dishonest of @TedCruz to file a financial disclosure form & not list his lending banks- then pretend he is going to clean up Wall St"]
+sen = [
+    "Don't wanna RT a bunch of @realDonaldTrump... but Donald is carpet bombing @tedcruz right now and it's really entertaining.",
+    "Greatly dishonest of @TedCruz to file a financial disclosure form & not list his lending banks- then pretend he is going to clean up Wall St"]
 print(getSentiments(sen))
-
-

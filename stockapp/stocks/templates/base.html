@@ -1,39 +1,49 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-  <h1>StockTalk</h1>
-  <div class="card">
-    <div class="item item-divider">
-      <div ng-bind="alertMessage" style="text-align:center; width:100%; color:red;"></div>
+    <head>
+        <title>StockTalk</title>
+        <link rel="stylesheet" href="{% static 'stocks/css/main.css' %}">
+    </head>
+  <body>
+    <h1>StockTalk</h1>
+    <div class="card">
+      <div class="item item-divider">
+        <div ng-bind="alertMessage" style="text-align:center; width:100%; color:red;"></div>
+      </div>
+
+      <hr>
+      <img src="{% static 'stocks/logo.png' %}">
+
+      <form ng-Submit= "sendForVerification()">
+        <hr>
+        <h3>Buy Shares:</h3>
+        <div class="form-inline">
+          <img src="{% static 'stocks/google.jpg' %}">
+          <img src="{% static 'stocks/microsoft.png' %}">
+          <img src="{% static 'stocks/facebook.jpg' %}">
+        </div>
+        <div class="form-inline">
+          <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
+          <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
+          <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
+        </div>
+        <div class="form-inline">
+          Price: $<div class="google-price">{{ google }}</div>
+          Price: $<div class="microsoft-price">{{ microsoft }}</div>
+          Price: $<div class="facebook-price">{{ facebook }}</div>
+        </div>
+        <div class="form-inline">
+          <button type='submit' class="submitBtn">Buy</button>
+          <button type='submit' class="submitBtn">Buy</button>
+          <button type='submit' class="submitBtn">Buy</button>
+        </div>
+        <hr>
+      </form>
     </div>
-
-    <hr>
-    <img src="logo.png">
-
-    <form ng-Submit= "sendForVerification()">
-      <hr>
-      <h3>Buy Shares:</h3>
-      <div class="form-inline">
-        <img src="google.jpg">
-        <img src="microsoft.png">
-        <img src="facebook.jpg">
-      </div>
-      <div class="form-inline">
-        <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
-        <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
-        <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
-      </div>
-      <div class="form-inline">
-        <h4>Price: $5.00</h4>
-        <h4>Price: $5.00</h4>
-        <h4>Price: $5.00</h4>
-      </div>
-      <div class="form-inline">
-        <button type='submit' class="submitBtn">Buy</button>
-        <button type='submit' class="submitBtn">Buy</button>
-        <button type='submit' class="submitBtn">Buy</button>
-      </div>
-      <hr>
-    </form>
-  </div>
+  </body>
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+  <script src="{% static 'stocks/js/main.js' %}"></script>
 </html>
