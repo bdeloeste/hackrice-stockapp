@@ -1,6 +1,5 @@
 import sys
 import json
-import os
 import time
 
 from datetime import datetime
@@ -10,6 +9,8 @@ from pymongo import collection as col
 from requests import packages
 from settings import API, AUTH, MONGO, URL, STOP
 from tweepy import StreamListener, streaming
+
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 p = pusher.Pusher(
         app_id='138191',
@@ -62,6 +63,9 @@ class CustomStreamListener(StreamListener):
         self.key_list = []
         self.wtf = wtf
         self.logfile = 'logfile.log'
+        self.google_price = 0
+        self.microsoft_price = 0
+        self.facebook_price = 0
         if filename is not None:
             self.filename = filename + '.txt'
 
@@ -113,8 +117,13 @@ class CustomStreamListener(StreamListener):
                             data_dict['text'] = match_group
                             print "Inserted text: " + data_dict['text'] + '\n'
                             self.key_list.append(match_group)
+                            sid = SentimentIntensityAnalyzer()
+                            ss = sid.polarity_scores(text)
+                            print ss['compound']
+                            score = ss['compound']
+                            self.google_price += score
                             p.trigger('test_channel', 'my_event',
-                                      {'message': text})
+                                      {'message': self.google_price})
                     else:
                         self.key_list.append(url_match.group())
         except TypeError, e:
