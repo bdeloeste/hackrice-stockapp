@@ -3,6 +3,10 @@
   margin: 0px;
 }
 
+table {
+  padding: 50px;
+}
+
 header {
   text-align: center;
   font-size:2.0em;
