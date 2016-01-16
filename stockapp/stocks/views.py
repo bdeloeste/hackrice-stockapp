@@ -9,6 +9,8 @@ def index(request):
     twitter_counter = 0
     facebook_counter = 0
 
-    co_stocks = {}
+    co_stocks = {'google': google_counter,
+                 'twitter': twitter_counter,
+                 'facebook': facebook_counter}
 
     return render(request, 'base.html', {})
