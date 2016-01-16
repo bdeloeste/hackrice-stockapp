@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <img src="..\stockapp\stocks\static\stocks\logo.png">
-  <hr>
-  <div class="card">    
-    <h3>Buy Shares:</h3>
+  <head>
+    <link rel="stylesheet" href="../stockapp/stocks/static/stocks/css/main.css">
+  </head>
+  <header>
+    <h1>StockTalk</h1>
+    <img src="../stockapp/stocks/static/stocks/logo.png">
+    <hr>
+  </header>
+  <body>
     <table>
-      <colgroup span="4"></colgroup>
       <tr>
-        <th>Company</th>
-        <th>Current Price</th>
-        <th>Past24h Graph</th>
-        <th></th>
+        <th><img src="../stockapp/stocks/static/stocks/google.png"></th>
+        <th><img src="../stockapp/stocks/static/stocks/microsoft.png"></th>
+        <th><img src="../stockapp/stocks/static/stocks/facebook.png"></th>
       </tr>
+
       <tr>
-        <td><img src="..\stockapp\stocks\static\stocks\google.jpg"></td>
-        <td><p>Price: $5.00</p></td>
-        <td><p>INSERT GRAPH</p></td>
-        <td>
+        <th><p>Price: $5.00</p></th>
+        <th><p>Price: $5.00</p></th>
+        <th><p>Price: $5.00</p></th>
+      </tr>
+
+      <tr>
+        <th>
           <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
           <button type='submit' class="submitBtn">Buy</button>
-        </td>
-      </tr>
-      <tr>
-        <td><img src="..\stockapp\stocks\static\stocks\microsoft.png"></td>
-        <td><p>Price: $5.00</p></td>
-        <td><p>INSERT GRAPH</p></td>
-        <td>
+        </th>
+        <th>
           <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
           <button type='submit' class="submitBtn">Buy</button>
-        </td>
-      </tr>
-      <tr>
-        <td><img src="..\stockapp\stocks\static\stocks\facebook.jpg"></td>
-        <td><p>Price: $5.00</p></td>
-        <td><p>INSERT GRAPH</p></td>
-        <td>
+        </th>
+        <th>
           <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
           <button type='submit' class="submitBtn">Buy</button>
-        </td>
       </tr>
     </table>
+  </body>
+  <footer>
     <hr>
     <p>Created by Jack, Justin, Bryan, and Shane for HackRice2016</p>
-  </div>
+  </footer>
 </html>
