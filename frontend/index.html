@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <h1>StockTalk</h1>
-  <div class="card">
-    <div class="item item-divider">
-      <div ng-bind="alertMessage" style="text-align:center; width:100%; color:red;"></div>
-    </div>
-    
+  <img src="logo.png">
+  <hr>
+  <div class="card">    
+    <h3>Buy Shares:</h3>
+    <table>
+      <colgroup span="4"></colgroup>
+      <tr>
+        <th>Company</th>
+        <th>Current Price</th>
+        <th>Past24h Graph</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td><img src="google.jpg"></td>
+        <td><p>Price: $5.00</p></td>
+        <td><p>INSERT GRAPH</p></td>
+        <td>
+          <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
+          <button type='submit' class="submitBtn">Buy</button>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="microsoft.png"></td>
+        <td><p>Price: $5.00</p></td>
+        <td><p>INSERT GRAPH</p></td>
+        <td>
+          <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
+          <button type='submit' class="submitBtn">Buy</button>
+        </td>
+      </tr>
+      <tr>
+        <td><img src="facebook.jpg"></td>
+        <td><p>Price: $5.00</p></td>
+        <td><p>INSERT GRAPH</p></td>
+        <td>
+          <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
+          <button type='submit' class="submitBtn">Buy</button>
+        </td>
+      </tr>
+    </table>
     <hr>
-    <img src="logo.png">
-
-    <form ng-Submit= "sendForVerification()">
-      <hr>
-      <h3>Buy Shares:</h3>
-      <div class="form-inline">
-        <img src="google.jpg">
-        <img src="microsoft.png">
-        <img src="facebook.jpg">
-      </div>
-      <div class="form-inline">
-        <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
-        <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
-        <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
-      </div>
-      <div class="form-inline">
-        <h4>Price: $5.00</h4>
-        <h4>Price: $5.00</h4>
-        <h4>Price: $5.00</h4>
-      </div>
-      <div class="form-inline">
-        <button type='submit' class="submitBtn">Buy</button>
-        <button type='submit' class="submitBtn">Buy</button>
-        <button type='submit' class="submitBtn">Buy</button>
-      </div>
-      <hr>
-    </form>
+    <p>Created by Jack, Justin, Bryan, and Shane for HackRice2016</p>
   </div>
 </html>
