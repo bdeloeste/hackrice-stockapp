@@ -2,15 +2,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'stocks/css/main.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   </head>
   <header>
-    <h1>StockTalk</h1>
     <img src="{% static 'stocks/logo.png' %}">
-    <hr>
+    <h1>StockTalk</h1>
   </header>
   <body>
-    <table>
+  <div class="container-fluid text-center">
+    <table class="table table-condensed">
       <tr>
         <th><img src="{% static 'stocks/google.png' %}"></th>
         <th><img src="{% static 'stocks/microsoft.png' %}"></th>
@@ -25,24 +29,50 @@
 
       <tr>
         <th>
-          <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
-          <button type='submit' class="submitBtn">Buy</button>
+          <form class="form-inline">
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success">Buy</button>
+          </form>
         </th>
         <th>
-          <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
-          <button type='submit' class="submitBtn">Buy</button>
+          <form class="form-inline">
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success">Buy</button>
+          </form>
         </th>
         <th>
-          <input type="text" placeholder="Number of Shares" ng-model='numShares' class="loginInput"></input>
-          <button type='submit' class="submitBtn">Buy</button>
+          <form class="form-inline">
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+              <div class="input-group">
+                <div class="input-group-addon">$</div>
+                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success">Buy</button>
+          </form>
+        </th>
       </tr>
     </table>
+    </div>
   </body>
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
   <script src="{% static 'stocks/js/main.js' %}"></script>
   <footer>
-    <hr>
     <p>Created by Jack, Justin, Bryan, and Shane for HackRice2016</p>
   </footer>

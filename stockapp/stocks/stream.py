@@ -126,18 +126,21 @@ class CustomStreamListener(StreamListener):
                             print ss['compound']
                             score = ss['compound']
                             for w in GOOGLE:
-                                if w in text and self.google_price > 0:
-                                    self.google_price += score
+                                if w in text and self.google_price >= 0:
+                                    self.google_price = score
                             for w in MICROSOFT:
-                                if w in text and self.microsoft_price > 0:
-                                    self.microsoft_price += score
+                                if w in text and self.microsoft_price >= 0:
+                                    self.microsoft_price = score
                             for w in FACEBOOK:
-                                if w in text and self.facebook_price > 0:
-                                    self.facebook_price += score
+                                if w in text and self.facebook_price >= 0:
+                                    self.facebook_price = score
                             p.trigger('test_channel', 'my_event',
                                       {'google': self.google_price,
                                        'microsoft': self.microsoft_price,
                                        'facebook': self.facebook_price})
+                            self.google_price = 0
+                            self.microsoft_price = 0
+                            self.facebook_price = 0
                     else:
                         self.key_list.append(url_match.group())
         except TypeError, e:
