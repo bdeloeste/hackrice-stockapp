@@ -11,7 +11,9 @@ $(document).ready(function() {
     });
     var channel = pusher.subscribe('test_channel');
     channel.bind('my_event', function(data) {
-      $(".google-price").text(data.message);
-      console.log(data.message);
+    console.log(data);
+      $(".google-price").text(parseFloat(data.google).toFixed(2));
+      $(".microsoft-price").text(parseFloat(data.microsoft).toFixed(2));
+      $(".facebook-price").text(parseFloat(data.facebook).toFixed(2));
     });
 });

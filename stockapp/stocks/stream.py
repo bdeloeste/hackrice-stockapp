@@ -19,6 +19,10 @@ p = pusher.Pusher(
 )
 p.trigger('test_channel', 'my_event', {'message': 'hello world'})
 
+GOOGLE = ['google', '#google', 'android', 'chrome', 'docs', 'drive', 'translate', 'technology']
+MICROSOFT = ['microsoft', '#microsoft', 'xbox', '#xbox', 'live', 'windows', 'office', 'word']
+FACEBOOK = ['facebook', '#facebook', 'fb', '#fb']
+
 
 class StreamFilter(object):
     """
@@ -121,9 +125,19 @@ class CustomStreamListener(StreamListener):
                             ss = sid.polarity_scores(text)
                             print ss['compound']
                             score = ss['compound']
-                            self.google_price += score
+                            for w in GOOGLE:
+                                if w in text and self.google_price > 0:
+                                    self.google_price += score
+                            for w in MICROSOFT:
+                                if w in text and self.microsoft_price > 0:
+                                    self.microsoft_price += score
+                            for w in FACEBOOK:
+                                if w in text and self.facebook_price > 0:
+                                    self.facebook_price += score
                             p.trigger('test_channel', 'my_event',
-                                      {'message': self.google_price})
+                                      {'google': self.google_price,
+                                       'microsoft': self.microsoft_price,
+                                       'facebook': self.facebook_price})
                     else:
                         self.key_list.append(url_match.group())
         except TypeError, e:
