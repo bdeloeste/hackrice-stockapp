@@ -111,3 +111,8 @@ div {
   width: 0px;
   visibility: hidden;
 }
+
+p {
+  font-size:2.0em;
+  padding: 10px;
+}
