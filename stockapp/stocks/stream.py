@@ -70,6 +70,9 @@ class CustomStreamListener(StreamListener):
         self.google_price = 0
         self.microsoft_price = 0
         self.facebook_price = 0
+        self.google_text = None
+        self.microsoft_text = None
+        self.facebook_text = None
         if filename is not None:
             self.filename = filename + '.txt'
 
@@ -125,19 +128,30 @@ class CustomStreamListener(StreamListener):
                             ss = sid.polarity_scores(text)
                             print ss['compound']
                             score = ss['compound']
+                            if score < 0:
+                                score += (3 * score)
                             for w in GOOGLE:
                                 if w in text and self.google_price >= 0:
                                     self.google_price = score
+                                    self.google_text = text
                             for w in MICROSOFT:
                                 if w in text and self.microsoft_price >= 0:
                                     self.microsoft_price = score
+                                    self.microsoft_text = text
                             for w in FACEBOOK:
                                 if w in text and self.facebook_price >= 0:
                                     self.facebook_price = score
+                                    self.facebook_text = text
                             p.trigger('test_channel', 'my_event',
                                       {'google': self.google_price,
                                        'microsoft': self.microsoft_price,
                                        'facebook': self.facebook_price})
+                            p.trigger('tweet_channel', 'my_event',
+                                      {
+                                          'google_text': self.google_text,
+                                          'microsoft_text': self.microsoft_text,
+                                          'facebook_text' : self.facebook_text
+                                      })
                             self.google_price = 0
                             self.microsoft_price = 0
                             self.facebook_price = 0

@@ -6,9 +6,9 @@ Version: 1.0
 Developed and Designed By: ThemeBite + bits by Bryan Deloeste
 */
 var total_cash = 100.00;
-var google_price = 0.01;
-var microsoft_price = 0.01;
-var facebook_price = 0.01;
+var google_price = 5.00;
+var microsoft_price = 5.00;
+var facebook_price = 5.00;
 
 var google_stocks = 0;
 var microsoft_stocks = 0;
@@ -36,6 +36,14 @@ $(document).ready(function() {
         $(".worth").text("$ " + ((worth).toFixed(2)).toString());
     });
 
+    var text_channel = pusher.subscribe('tweet_channel');
+    text_channel.bind('my_event', function(data) {
+    console.log(data);
+        $(".google_text").text(data.google_text);
+        $(".microsoft_text").text(data.microsoft_text);
+        $(".facebook_text").text(data.facebook_text);
+});
+
     $("#google-button").click( function(e) {
             e.preventDefault();
             var googleAmount = parseInt($("#google-amount").val());
@@ -46,6 +54,7 @@ $(document).ready(function() {
                 total_cash -= price;
                 $(".total-cash").text("$ " + total_cash.toFixed(2).toString());
                 $(".google-stocks").text(google_stocks);
+                $(".google-price").text("$ " + ((google_price + (google_price * .1 )).toFixed(2)).toString());
             }
         }
     );
