@@ -36,6 +36,14 @@ $(document).ready(function() {
         $(".worth").text("$ " + ((worth).toFixed(2)).toString());
     });
 
+    var channel = pusher.subscribe('tweet_channel');
+    channel.bind('my_event', function(data) {
+        console.log(data);
+         $(".google-text").text(google_text);
+         $(".microsoft-text").text(microsoft_text);
+         $(".google-text").text(google_text);
+    });
+
     $("#google-button").click( function(e) {
             e.preventDefault();
             var googleAmount = parseInt($("#google-amount").val());
