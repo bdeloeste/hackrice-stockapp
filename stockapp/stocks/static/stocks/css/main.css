@@ -79,3 +79,34 @@ img{
   width: 200px;
   height: 200px;
 }
+
+#up_nav {
+  text-align: center;
+  font-size:2.0em;
+  background-image: url("backBar.png");
+  background-size:100% 100%;
+  padding: 5px;
+}
+
+nav ul li {
+  display:inline;
+  padding:5px;
+  margin: 20px;
+}
+
+#select{
+  background-color: black;
+}
+
+nav ul li:hover {
+    background-color: #424242;
+    color: white;
+}
+
+div {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  width: 0px;
+  visibility: hidden;
+}

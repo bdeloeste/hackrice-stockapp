@@ -7,9 +7,24 @@
   </head>
   <header>
     <img src="../stockapp/stocks/static/stocks/logo.png">
-      <h1>StockTalk</h1>
+      <h1>The Ideal Stock Market</h1>
   </header>
   <body>
+
+  <nav id="up_nav">
+  <ul>
+    <li id="select" onclick="openPage('market', this)">The Market</li>
+    <li onclick="openPage('dream', this)">Our Dream</li>
+  </ul>
+  </nav>
+
+  <main id="main">
+
+  </main>
+
+
+<div>
+  <div id="market">
     <table>
       <tr>
         <th><img src="../stockapp/stocks/static/stocks/google.png"></th>
@@ -43,8 +58,31 @@
     <h1>Graph Here</h1>
     <h1>Graph Here</h1>
     <h1>Graph Here</h1>
+  </div>
+  <div id="dream">
+    <h1>We have a dream</h1>
+  </div>
+</div>
+
   </body>
   <footer>
     <p>Created by Jack, Justin, Bryan, and Shane for HackRice2016</p>
   </footer>
+
+  <script>
+document.getElementById('main').innerHTML = document.getElementById("market").innerHTML;
+
+var button = document.getElementById("select");
+
+
+
+function openPage(name, new_button) {
+  button.id = "";
+  button = new_button;
+  button.id = "select";
+
+  document.getElementById('main').innerHTML = document.getElementById(name).innerHTML;
+  }
+
+  </script>
 </html>
