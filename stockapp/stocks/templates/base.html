@@ -13,6 +13,20 @@
     <h1>StockTalk</h1>
   </header>
   <body>
+
+<nav id="up_nav">
+  <ul>
+    <li id="select" onclick="openPage('market', this)">The Market</li>
+    <li onclick="openPage('dream', this)">Our Dream</li>
+  </ul>
+</nav>
+
+<main id="main">
+
+</main>
+
+<div>
+  <div id="market">
   <div class="container-fluid text-center">
     <div class="jumbotron">
       <h1>Welcome to <b>THE</b> Ideal Stock Market!</h1>
@@ -84,10 +98,41 @@
       </tr>
     </table>
     </div>
-    <footer>
-      <p>Created by Jack, Justin, Bryan, and Shane for HackRice2016</p>
-    </footer>
+    </div>
+  <div id="dream">
+
+      <h1>Our dream of the ideal stock market:</h1>
+      </p>The values of companies are decided not by complicated economic forces that no one really understands but by how many people companies can make happy</p>
+      </p>Only companies that people care about are publicly traded</p>
+      </p>Everyone has the power to influence the values of companies by making their voices heard on twitter (no spamming though)</p>
+      </p>Stocks are cheap enough that anyone can afford them and change in price quickly enough that everyone can make their fortune in minutes and move on to more important things</p>
+      </p>There are no losers. Only winners and bigger winners</p>
+      </p>Economics is simple enough that it doesn&#39;t take a PhD to understand. Stock trading systems should reflect this</p>
+
+      <footer>
+        <p>Created by Jack, Justin, Bryan, and Shane for HackRice2016</p>
+      </footer>
+
+  </div>
+</div>
   </body>
+   <script>
+document.getElementById('main').innerHTML = document.getElementById("market").innerHTML;
+
+var button = document.getElementById("select");
+
+
+
+function openPage(name, new_button) {
+  button.id = "";
+  button = new_button;
+  button.id = "select";
+
+  document.getElementById('main').innerHTML = document.getElementById(name).innerHTML;
+  }
+
+  </script>
+
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
