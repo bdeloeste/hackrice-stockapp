@@ -3,8 +3,21 @@
   margin: 0px;
 }
 
+.container-fluid {
+    padding-top: 50px;
+}
+
 table {
+  border-top: hidden;
   padding: 50px;
+}
+
+tr {
+    border: hidden;
+}
+
+th {
+    text-align: center;
 }
 
 header {
@@ -12,7 +25,8 @@ header {
   font-size:2.0em;
   background-color: black;
   color: white;
-  padding: 10px;
+  padding-top: 30px;
+  padding-bottom: 40px;
   font-family: 'Raleway', sans-serif;
 }
 
