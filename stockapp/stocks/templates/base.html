@@ -14,65 +14,83 @@
   </header>
   <body>
   <div class="container-fluid text-center">
-    <table class="table table-condensed">
-      <tr>
+    <div class="jumbotron">
+      <h1>Welcome to <b>THE</b> Ideal Stock Market!</h1>
+      <h2>You're worth: </h2>
+      <div class="worth"></div>
+      <h3>You have: </h3>
+      <div class="total-cash"></div>
+      <p>Your shares:</p>
+      <table class="table">
+        <tr>
+          <th>Google</th>
+          <th>Microsoft</th>
+          <th>Facebook</th>
+        </tr>
+        <tr>
+          <th><div class="google-stocks">0</div></th>
+          <th><div class="microsoft-stocks">0</div></th>
+          <th><div class="facebook-stocks">0</div></th>
+        </tr>
+      </table>
+    </div>
+    <table class="company-table">
+      <tr class="hide-top">
         <th><img src="{% static 'stocks/google.png' %}"></th>
         <th><img src="{% static 'stocks/microsoft.png' %}"></th>
         <th><img src="{% static 'stocks/facebook.png' %}"></th>
       </tr>
 
-      <tr>
+      <tr class="hide-top">
         <th><p><div class="google-price">{{ google }}</div></p></th>
         <th><p><div class="microsoft-price">{{ microsoft }}</div></p></th>
         <th><p><div class="facebook-price">{{ facebook }}</div></p></th>
       </tr>
 
-      <tr>
+      <tr class="hide-top">
         <th>
-          <form class="form-inline">
+          <form class="form-inline" id="google-form">
             <div class="form-group">
-              <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
               <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                <input type="text" class="form-control" placeholder="Amount" id="google-amount">
               </div>
             </div>
-            <button type="submit" class="btn btn-success">Buy</button>
+            <button type="submit" class="btn btn-success" id="google-button">Buy</button>
+            <button type="submit" class="btn btn-success" id="google-sell-button">Sell</button>
           </form>
         </th>
         <th>
-          <form class="form-inline">
+          <form class="form-inline" id="microsoft-form">
             <div class="form-group">
-              <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
               <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                <input type="text" class="form-control" placeholder="Amount" id="microsoft-amount">
               </div>
             </div>
-            <button type="submit" class="btn btn-success">Buy</button>
+            <button type="submit" class="btn btn-success" id="microsoft-button">Buy</button>
+            <button type="submit" class="btn btn-success" id="microsoft-sell-button">Sell</button>
           </form>
         </th>
         <th>
-          <form class="form-inline">
+          <form class="form-inline" id="facebook-form">
             <div class="form-group">
-              <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
               <div class="input-group">
-                <div class="input-group-addon">$</div>
-                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+                <input type="text" class="form-control" placeholder="Amount" id="facebook-amount">
               </div>
             </div>
-            <button type="submit" class="btn btn-success">Buy</button>
+            <button type="submit" class="btn btn-success" id="facebook-button">Buy</button>
+            <button type="submit" class="btn btn-success" id="facebook-sell-button">Sell</button>
           </form>
         </th>
       </tr>
     </table>
     </div>
+    <footer>
+      <p>Created by Jack, Justin, Bryan, and Shane for HackRice2016</p>
+    </footer>
   </body>
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
   <script src="{% static 'stocks/js/main.js' %}"></script>
-  <footer>
-    <p>Created by Jack, Justin, Bryan, and Shane for HackRice2016</p>
-  </footer>
+</html>
