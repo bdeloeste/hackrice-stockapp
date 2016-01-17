@@ -70,9 +70,6 @@ class CustomStreamListener(StreamListener):
         self.google_price = 0
         self.microsoft_price = 0
         self.facebook_price = 0
-        self.google_text = "None"
-        self.microsoft_text = "None"
-        self.facebook_text = "None"
         if filename is not None:
             self.filename = filename + '.txt'
 
@@ -81,16 +78,17 @@ class CustomStreamListener(StreamListener):
         try:
             if 'text' in data_dict:
                 self.get_unique_tweets(data_dict)
-        except e:
+        except KeyError, e:
             # TODO Log KeyError
-            print(e)
+            print >> sys.stderr, e
+            self.log_error(str(e))
 
     def on_error(self, status_code):
         error_message = "Encountered error with status code: ", status_code
         print >> sys.stderr, error_message
         self.log_error(error_message)
         if status_code == 420:
-            print ("Sleeping for 15 min...")
+            print "Sleeping for 15 min..."
             time.sleep(900)
         return True
 
@@ -121,40 +119,33 @@ class CustomStreamListener(StreamListener):
                             flag = True
                         if flag is False:
                             data_dict['text'] = match_group
-                            print ("Inserted text: " + data_dict['text'] + '\n')
+                            print "Inserted text: " + data_dict['text'] + '\n'
                             self.key_list.append(match_group)
                             sid = SentimentIntensityAnalyzer()
                             ss = sid.polarity_scores(text)
-                            print (ss['compound'])
+                            print ss['compound']
                             score = ss['compound']
                             for w in GOOGLE:
-                                google_text = data_dict['text']
                                 if w in text and self.google_price >= 0:
                                     self.google_price = score
                             for w in MICROSOFT:
-                                microsoft_text = data_dict['text']
                                 if w in text and self.microsoft_price >= 0:
                                     self.microsoft_price = score
                             for w in FACEBOOK:
-                                facebook_text = data_dict['text']
                                 if w in text and self.facebook_price >= 0:
                                     self.facebook_price = score
                             p.trigger('test_channel', 'my_event',
                                       {'google': self.google_price,
                                        'microsoft': self.microsoft_price,
                                        'facebook': self.facebook_price})
-                            p.trigger('tweet_channel', 'my_event',
-                                      {'google': self.google_text,
-                                       'microsoft': self.microsoft_text,
-                                       'facebook': self.facebook_text})
                             self.google_price = 0
                             self.microsoft_price = 0
                             self.facebook_price = 0
-
                     else:
                         self.key_list.append(url_match.group())
-        except:
-            print ("Error code 28475")
+        except TypeError, e:
+            print >> sys.stderr, e
+            self.log_error(str(e))
         return
 
     def get_geo_tweets(self, data_dict):
@@ -175,8 +166,9 @@ class CustomStreamListener(StreamListener):
                         coordinates = data_dict['coordinates']['coordinates']
                         outfile.write(str(coordinates[0]) + ',' +
                                       str(coordinates[1]) + '\n')
-        except:
-            print("Error code 947284")
+        except KeyError, e:
+            print >> sys.stderr, e
+            self.log_error(str(e))
         return
 
     def log_error(self, error):
@@ -213,13 +205,19 @@ def main():
     tweet_stream = streaming.Stream(AUTH,
                                     CustomStreamListener(API, stream_filter))
     while True:
-        print ("Starting new stream...")
+        print "Starting new stream..."
         try:
-            print ("Getting unique Tweets:")
+            print "Getting unique Tweets:"
             tweet_stream.filter(languages=["en"], track=keywords)
-        except:
-            print("Error code 38473")
+        except packages.urllib3.exceptions.ProtocolError, e:
+            print >> sys.stderr, e + "\nRestarting stream..."
             continue
+        except packages.urllib3.exceptions.ReadTimeoutError, e:
+            print >> sys.stderr, e + "\nRestarting stream..."
+            continue
+        except KeyboardInterrupt:
+            tweet_stream.disconnect()
+            break
 
 
 if __name__ == '__main__':
