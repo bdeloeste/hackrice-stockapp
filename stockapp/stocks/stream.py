@@ -19,9 +19,9 @@ p = pusher.Pusher(
 )
 p.trigger('test_channel', 'my_event', {'message': 'hello world'})
 
-GOOGLE = ['google', '#google', 'android', 'chrome', 'docs', 'drive', 'translate', 'technology']
-MICROSOFT = ['microsoft', '#microsoft', 'xbox', '#xbox', 'live', 'windows', 'office', 'word']
-FACEBOOK = ['facebook', '#facebook', 'fb', '#fb']
+GOOGLE = ['google', '#google', 'android', 'chrome', 'docs', 'drive', 'translate', 'technology', 'youtube']
+MICROSOFT = ['microsoft', '#microsoft', 'xbox', '#xbox', 'live', 'windows', '#windows', 'office', 'word']
+FACEBOOK = ['facebook', '#facebook', 'fb', '#fb', 'oculus', 'instagram']
 
 
 class StreamFilter(object):
